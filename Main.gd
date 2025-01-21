@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var test_room : PackedScene
+
 var map0 = preload("res://Maps/Map.tscn")
 var map1 = preload("res://Maps/Map1.tscn")
 var map2 = preload("res://Maps/Map2.tscn")
@@ -48,7 +50,10 @@ func _load_level():
 	$Player.position = Vector2i(250, 250)
 	$Player.moving = false
 	# init rooms
-	if level % boss_level_multiple == 0:
+	if Settings.testing_mode && test_room:
+		var new_room = test_room.instantiate()
+		$Rooms.add_child(new_room)
+	elif level % boss_level_multiple == 0:
 		init_boss_room()
 	else:
 		init_rooms()

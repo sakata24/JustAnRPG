@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://dda6n6o12t38y"]
+[gd_scene load_steps=18 format=3 uid="uid://dda6n6o12t38y"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://drxy1302xvj6u" path="res://Maps/TestMap.tscn" id="2_3w5nu"]
 [ext_resource type="PackedScene" uid="uid://cbiw1tglncahn" path="res://Maps/Home.tscn" id="2_oh4kf"]
 [ext_resource type="PackedScene" uid="uid://83qg0j5exfyc" path="res://Characters/Player.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://76xj3tuaqt16" path="res://HUDs/HUD.tscn" id="4"]
@@ -69,6 +70,7 @@ animations = [{
 [node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1")
+test_room = ExtResource("2_3w5nu")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -110

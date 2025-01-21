@@ -21,3 +21,5 @@ mono_crash.*.json
 *.cfg
 *.cfg
 *.md5
+*.cfg
+*.md5
