@@ -13,3 +13,5 @@ var baseSpeed = 0
 var maxHealth = 1
 # last damage hit with
 var lastElementsHitBy = []
+# cc immune?
+var cc_immune: bool = false

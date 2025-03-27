@@ -1,3 +1,7 @@
+# Sickness:
+# Creation: entropy + wither
+# create a field that applies a random debuff to enemies in the radius
+
 class_name SicknessReaction extends AreaReaction
 
 var debuffedEnemies

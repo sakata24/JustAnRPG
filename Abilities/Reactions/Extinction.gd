@@ -1,3 +1,7 @@
+# Extinction:
+# Creation: construct + wither
+# execute enemies that fall below a specific hp in a radius around the source
+
 class_name ExtinctionReaction extends AreaReaction
 
 const BASE_EXTINCTION_RADIUS = 32

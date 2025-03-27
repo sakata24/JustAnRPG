@@ -1,8 +1,30 @@
-[gd_scene load_steps=14 format=3 uid="uid://83qg0j5exfyc"]
+[gd_scene load_steps=24 format=3 uid="uid://83qg0j5exfyc"]
 
-[ext_resource type="Script" uid="uid://d2e7tavmwes6y" path="res://Characters/Player.gd" id="1"]
+[ext_resource type="Script" uid="uid://yspisjr3b8y5" path="res://Characters/Player.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://dq0nxxg68sdw7" path="res://Resources/player-cast.png" id="2_58vhh"]
 [ext_resource type="Texture2D" uid="uid://e73ivebdym3s" path="res://Resources/player-sprite.png" id="2_vjjrh"]
 [ext_resource type="Texture2D" uid="uid://dh3jx4vydfqin" path="res://Resources/WhiteCircle.png" id="3_utm12"]
+[ext_resource type="Script" uid="uid://drf17f1mu335f" path="res://StateMachine/StateMachine.gd" id="5_v6d5b"]
+[ext_resource type="Script" uid="uid://dydpt5ghjcxq6" path="res://Characters/PlayerStates/PlayerCastingState.gd" id="6_c3bgu"]
+[ext_resource type="Script" uid="uid://c7818rcrjewfw" path="res://Characters/PlayerStates/PlayerDashingState.gd" id="7_nwlvs"]
+[ext_resource type="Script" uid="uid://dl1fa8smwli0i" path="res://Characters/PlayerStates/PlayerIdleState.gd" id="8_x35ji"]
+[ext_resource type="Script" uid="uid://cfs5h0csie147" path="res://Characters/PlayerStates/PlayerMovingState.gd" id="9_o8u7c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64fup"]
+atlas = ExtResource("2_58vhh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7es1"]
+atlas = ExtResource("2_58vhh")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycf05"]
+atlas = ExtResource("2_58vhh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_878xk"]
+atlas = ExtResource("2_58vhh")
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ci4k"]
 atlas = ExtResource("2_vjjrh")
@@ -38,6 +60,23 @@ region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bv2qp"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64fup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7es1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycf05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_878xk")
+}],
+"loop": false,
+"name": &"cast",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_4ci4k")
@@ -81,15 +120,14 @@ z_index = 9
 collision_layer = 9
 collision_mask = 41
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_bv2qp")
-animation = &"idle"
+animation = &"cast"
 autoplay = "idle"
-frame = 3
-frame_progress = 0.0152724
 
 [node name="Shadow" type="Polygon2D" parent="."]
 z_index = -2
@@ -103,12 +141,16 @@ shape = SubResource("CircleShape2D_bixge")
 wait_time = 5.0
 one_shot = true
 
+[node name="MultiCastTimer" type="Timer" parent="."]
+wait_time = 0.08
+
 [node name="CastTimer" type="Timer" parent="."]
 wait_time = 0.15
 one_shot = true
 
-[node name="MultiCastTimer" type="Timer" parent="."]
-wait_time = 0.08
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 2
+avoidance_enabled = true
 
 [node name="ProjectilePivot" type="Node2D" parent="."]
 rotation = -6.28319
@@ -122,6 +164,33 @@ shadow_enabled = true
 shadow_color = Color(0, 0, 0, 1)
 texture = ExtResource("3_utm12")
 
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_v6d5b")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://drf17f1mu335f"
+
+[node name="Casting" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("6_c3bgu")
+cast_time = 0.15
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dydpt5ghjcxq6"
+
+[node name="Dashing" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("7_nwlvs")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://c7818rcrjewfw"
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("8_x35ji")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://dl1fa8smwli0i"
+
+[node name="Moving" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
+script = ExtResource("9_o8u7c")
+player = NodePath("../..")
+metadata/_custom_type_script = "uid://cfs5h0csie147"
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
-[connection signal="timeout" from="CastTimer" to="." method="_on_cast_timer_timeout"]
 [connection signal="timeout" from="MultiCastTimer" to="." method="_on_multi_cast_timer_timeout"]
+[connection signal="timeout" from="CastTimer" to="." method="_on_cast_timer_timeout"]

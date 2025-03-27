@@ -14,6 +14,14 @@ var dead = false
 var menus = []
 var level = 0
 var boss_level_multiple = 5 # default floor multiple boss spawns on
+enum {
+	NONE,
+	NORMAL,
+	BOSS
+}
+var level_type: int = NONE # the type of level
+
+
 
 # room hex: 25131a
 
@@ -31,9 +39,10 @@ func _ready():
 	$Rooms/Home/Tome.connect("button_pressed", Callable(self, "_give_tome_spells"))
 	$Rooms/Home/Tome/ChangeSpells.connect("equip_skill", Callable(self, "_change_skills"))
 	$Rooms/Home/Librarian.connect("button_pressed", Callable(self, "_add_menu"))
-	#$Rooms/Home/Librarian/Shop.connect("purchased", Callable(self, "_unlock_skill"))
+	$Rooms/Home/Librarian/Shop.connect("purchased", Callable(self, "_unlock_skill"))
 	$Rooms/Home/Armorer.connect("button_pressed", Callable(self, "_add_menu"))
-	if Settings.settings_dict["dev_mode"]:
+	update_shopkeeper()
+	if Settings.is_dev_mode:
 		boss_level_multiple = 2
 
 # called every time a player goes thru the door
@@ -44,85 +53,109 @@ func _load_level():
 	# clean rooms node
 	for child in $Rooms.get_children():
 		child.queue_free()
+	# clean monsters group
 	$Player.position = Vector2i(250, 250)
 	$Player.moving = false
+	$Player.move_target = $Player.position
+	var prev_level_type = level_type
 	# init rooms
 	if level % boss_level_multiple == 0:
+		level_type = BOSS
 		init_boss_room()
 	else:
+		level_type = NORMAL
 		init_rooms()
+		$AudioStreamPlayer.swap_bgm("default")
 	# save the state of the game every level to be persisted
 	CustomResourceLoader.save_game()
+
+func cleanup_previous_level():
+	for enemy in get_tree().get_nodes_in_group("monsters"):
+		# remove them from group first, so that generating rooms does not break the game
+		enemy.remove_from_group("monsters")
+		# then free them at the end of the frame
+		enemy.queue_free()
+	for spell in get_tree().get_nodes_in_group("skills"):
+		# remove them from group first, so that generating rooms does not break the game
+		spell.remove_from_group("monsters")
+		# then free them at the end of the frame
+		spell.queue_free()
 
 func init_boss_room():
 	var new_room = boss_level.instantiate()
 	$Rooms.add_child(new_room)
+	new_room.get_node("ExitDoor").connect("load_level", Callable(self, "_load_level"))
+	for monster in get_tree().get_nodes_in_group("monsters"):
+		monster.maxHealth += level * 100
+		monster.health += level * 100
+		monster.my_dmg *= 1 + (level/10)
+		monster.baseDmg += 1 + (level/10)
 
 func init_rooms():
 	exit_room = Vector2i(randi_range(1, MAP_SIZE-1), randi_range(1, MAP_SIZE-1))
 	for i in range(0,MAP_SIZE):
 		for j in range(0,MAP_SIZE):
-			var newRoom
+			var new_room
 			if Vector2i(0, 0) == Vector2i(i, j):
-				newRoom = spawn.instantiate()
+				new_room = spawn.instantiate()
 			elif exit_room == Vector2i(i, j):
-				newRoom = exit.instantiate()
-				newRoom.connect("load_level", Callable(self, "_load_level"))
+				new_room = exit.instantiate()
+				new_room.get_node("ExitDoor").connect("load_level", Callable(self, "_load_level"))
 			else:
 				var rand = randi_range(0,3);
 				if rand == 0:
-					newRoom = map0.instantiate()
+					new_room = map0.instantiate()
 				elif rand == 1:
-					newRoom = map1.instantiate()
+					new_room = map1.instantiate()
 				elif rand == 2:
-					newRoom = map2.instantiate()
+					new_room = map2.instantiate()
 				else:
-					newRoom = map3.instantiate()
-			newRoom.position = Vector2(position.x + (496.0 * i), position.y + (496.0 * j))
+					new_room = map3.instantiate()
+			new_room.position = Vector2(position.x + (496.0 * i), position.y + (496.0 * j))
 			
 			# block off edges of map
-			var tilemap: TileMapLayer = newRoom.get_node("NavigationRegion2D/Layer0")
+			var tilemap: TileMapLayer = new_room.get_node("NavigationRegion2D/Layer0")
 			# top
 			if j == 0:
 				for n in range(0, 31):
-					if n == 13:
+					if n == 12:
 						tilemap.set_cell(Vector2i(n, -1), 0, Vector2i(0, 3), 0)
-					elif 13 < n and n < 17:
+					elif 12 < n and n < 18:
 						tilemap.set_cell(Vector2i(n, -1), 0, Vector2i(1, 0), 0)
-					elif n == 17:
+					elif n == 18:
 						tilemap.set_cell(Vector2i(n, -1), 0, Vector2i(5, 0), 0)
 					else:
 						tilemap.set_cell(Vector2i(n, -1), 0, Vector2i(8, 7), 0)
 			# left
 			if i == 0:
 				for n in range(0, 31):
-					if 12 < n and n < 17:
+					if 11 < n and n < 18:
 						tilemap.set_cell(Vector2i(-1, n), 0, Vector2i(0, 1), 0)
-					elif n == 17:
+					elif n == 18:
 						tilemap.set_cell(Vector2i(-1, n), 0, Vector2i(0, 4), 0)
 					else:
 						tilemap.set_cell(Vector2i(-1, n), 0, Vector2i(8, 7), 0)
 			# bottom
 			if j == MAP_SIZE-1:
 				for n in range(0, 31):
-					if n == 13:
+					if n == 12:
 						tilemap.set_cell(Vector2i(n, 31), 0, Vector2i(0, 4), 0)
-					elif 13 < n and n < 17:
+					elif 12 < n and n < 18:
 						tilemap.set_cell(Vector2i(n, 31), 0, Vector2i(1, 4), 0)
-					elif n == 17:
+					elif n == 18:
 						tilemap.set_cell(Vector2i(n, 31), 0, Vector2i(5, 4), 0)
 					else:
 						tilemap.set_cell(Vector2i(n, 31), 0, Vector2i(8, 7), 0)
 			# right
 			if i == MAP_SIZE-1:
 				for n in range(0, 31):
-					if 12 < n and n < 17:
+					if 11 < n and n < 18:
 						tilemap.set_cell(Vector2i(31, n), 0, Vector2i(5, 1), 0)
-					elif n == 17:
+					elif n == 18:
 						tilemap.set_cell(Vector2i(31, n), 0, Vector2i(5, 4), 0)
 					else:
 						tilemap.set_cell(Vector2i(31, n), 0, Vector2i(8, 7), 0)
-			$Rooms.add_child(newRoom)
+			$Rooms.add_child(new_room)
 	# fetch group of monsters on the map and connect their giveXp signals to player
 	var monsters = get_tree().get_nodes_in_group("monsters")
 	for monster in monsters:
@@ -130,7 +163,12 @@ func init_rooms():
 		monster.health *= level
 		monster.my_dmg *= level
 		monster.baseDmg *= level
-		monster.connect("give_xp", Callable($Player, "gain_xp"))
+		monster.connect("give_xp", Callable(self, "gain_xp"))
+
+func gain_xp(amount, elements):
+	print("gaining xp")
+	for element in elements:
+		PersistentData.increase_xp(amount, element)
 
 func _unhandled_input(event):
 	if event.is_action_pressed('ui_cancel') and !dead:
@@ -217,6 +255,11 @@ func _unlock_skill(name, element, price):
 				PersistentData.wither_xp -= price
 				PersistentData.unlockedSkills.append(name)
 				$Rooms/Home/Librarian/Shop.remove_item(name)
+	update_shopkeeper()
+
+# make librarian update inventory based on players unlocked skills
+func update_shopkeeper():
+	$Rooms/Home/Librarian.update_inventory(PersistentData.get_unlocked_skills(), {"sunder xp": PersistentData.sunder_xp, "entropy xp": PersistentData.entropy_xp, "construct xp": PersistentData.construct_xp, "growth xp": PersistentData.growth_xp, "flow xp": PersistentData.flow_xp, "wither xp": PersistentData.wither_xp})
 
 func _give_tome_spells(menu):
 	$Rooms/Home/Tome/ChangeSpells.init(PersistentData.get_unlocked_skills(), $Player.get_equipped_skills())

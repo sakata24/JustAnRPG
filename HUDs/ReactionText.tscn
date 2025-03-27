@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://gplnmaadr832"]
 
-[ext_resource type="Script" uid="uid://besa44eg2wbgl" path="res://HUDs/DamageNumber.gd" id="1_ecsow"]
+[ext_resource type="Script" uid="uid://bl0783yiq0xc4" path="res://HUDs/DamageNumber.gd" id="1_ecsow"]
 [ext_resource type="Theme" uid="uid://bngt8jkm3fvb1" path="res://Resources/hud_elements/default.theme" id="2_8q6ak"]
 [ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="3_icg6g"]
 

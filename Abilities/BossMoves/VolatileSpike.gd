@@ -32,6 +32,7 @@ func _physics_process(delta):
 
 func handle_reaction(reactant: BaseTypeAbility):
 	print("MAKE IT RAIN")
+	player.shake()
 	for i in 9:
 		var spike: IcathianRainAbility = Rain.instantiate()
 		var rad = deg_to_rad(360/9 * i)
@@ -43,6 +44,11 @@ func handle_reaction(reactant: BaseTypeAbility):
 		spike.add_to_group("enemy_skills")
 		spike.add_to_group("skills")
 		spike.velocity = (pos - global_position).normalized()
+	$AudioStreamPlayer2D.play()
+	hide()
+	set_collision_mask_value(1, false)
+	set_collision_mask_value(3, false)
+	await $AudioStreamPlayer2D.finished
 	queue_free()
 
 func _on_body_entered(body: PhysicsBody2D):

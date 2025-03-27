@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfqkgpih5rk5m"]
+
+[ext_resource type="Script" uid="uid://bml37n2a20hgk" path="res://Abilities/Reactions/Pursuit.gd" id="1_dadwr"]
+
+[node name="Pursuit" type="Node2D"]
+script = ExtResource("1_dadwr")

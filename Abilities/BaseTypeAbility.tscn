@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bnisb47qe61bq"]
 
-[ext_resource type="Script" uid="uid://do3qcs36uarq1" path="res://Abilities/BaseAbilityScripts/BaseTypeAbility.gd" id="1_tonm5"]
+[ext_resource type="Script" uid="uid://dcj7gt0o7ynfq" path="res://Abilities/BaseAbilityScripts/BaseTypeAbility.gd" id="1_tonm5"]
 
 [node name="AbilityBody" type="Area2D"]
 process_mode = 1
@@ -24,4 +24,4 @@ scale = Vector2(0.5, 0.5)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="LifetimeTimer" to="." method="_on_LifetimeTimer_timeout"]
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

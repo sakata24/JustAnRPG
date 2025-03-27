@@ -1,3 +1,7 @@
+# Shatter:
+# Creation: sunder + construct
+# create a pulsing field that detonates around the source 3 times
+
 class_name ShatterReaction extends AreaReaction
 
 var my_parent

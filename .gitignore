@@ -21,3 +21,5 @@ mono_crash.*.json
 *.cfg
 *.cfg
 *.md5
+.godot/editor/Home.tscn-editstate-3a572c13bf62ab660dd2274ff9710285.cfg
+.godot/editor/HUD.tscn-editstate-84cafcdd542adbe492d6af6716dc744d.cfg

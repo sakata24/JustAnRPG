@@ -1,34 +1,114 @@
-[gd_scene load_steps=14 format=3 uid="uid://c4ktyer38vnk4"]
+[gd_scene load_steps=27 format=3 uid="uid://c4ktyer38vnk4"]
 
-[ext_resource type="Script" uid="uid://c6ewm0kfmomky" path="res://Characters/Enemies/Monster/Monster.gd" id="1"]
+[ext_resource type="Script" uid="uid://dff3bryl7reu0" path="res://Characters/Enemies/Monster/Monster.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cryka57a5ond" path="res://Resources/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Character.png" id="2_ih4cu"]
+[ext_resource type="Texture2D" uid="uid://b432xtm7oopgf" path="res://Resources/enemies/monster.png" id="2_ue8vv"]
 [ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="3_801wt"]
-[ext_resource type="Script" uid="uid://j7f61gjvewa4" path="res://StateMachine/StateMachine.gd" id="4_8alai"]
-[ext_resource type="Script" uid="uid://clhbpsx44c74e" path="res://Characters/Enemies/Monster/MonsterStates/MonsterChaseState.gd" id="5_3nu2b"]
-[ext_resource type="Script" uid="uid://uwxbbnvsmads" path="res://Characters/Enemies/Monster/MonsterStates/MonsterIdleState.gd" id="6_y0a0h"]
-[ext_resource type="Script" uid="uid://ce7eenuitvc55" path="res://Characters/Enemies/Monster/MonsterStates/MonsterStunnedState.gd" id="7_r742e"]
-[ext_resource type="Script" uid="uid://bjwncp7taw2hb" path="res://Characters/Enemies/Monster/MonsterStates/MonsterAttackingState.gd" id="8_fcqrr"]
+[ext_resource type="Script" uid="uid://drf17f1mu335f" path="res://StateMachine/StateMachine.gd" id="4_8alai"]
+[ext_resource type="Script" uid="uid://brs63mfox6y58" path="res://Characters/Enemies/Monster/MonsterStates/MonsterChaseState.gd" id="5_3nu2b"]
+[ext_resource type="Script" uid="uid://b2etgy67pp3ug" path="res://Characters/Enemies/Monster/MonsterStates/MonsterIdleState.gd" id="6_y0a0h"]
+[ext_resource type="Script" uid="uid://dy3ivdu5piffg" path="res://Characters/Enemies/Monster/MonsterStates/MonsterStunnedState.gd" id="7_r742e"]
+[ext_resource type="Script" uid="uid://b5v3orwbephnj" path="res://Characters/Enemies/Monster/MonsterStates/MonsterAttackingState.gd" id="8_fcqrr"]
+[ext_resource type="Script" uid="uid://b67wslm8oirdo" path="res://Characters/Enemies/Monster/MonsterStates/MonsterReelingState.gd" id="10_6r2c4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ue8vv"]
+atlas = ExtResource("2_ue8vv")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj3aj"]
+atlas = ExtResource("2_ue8vv")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oiitb"]
+atlas = ExtResource("2_ue8vv")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lljtl"]
+atlas = ExtResource("2_ue8vv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6s48r"]
+atlas = ExtResource("2_ue8vv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r2c4"]
+atlas = ExtResource("2_ue8vv")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfj5b"]
+atlas = ExtResource("2_ue8vv")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8gf7"]
+atlas = ExtResource("2_ue8vv")
+region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fpaif"]
 animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 5.0
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ue8vv")
 }, {
-"frames": [],
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj3aj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oiitb")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lljtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6s48r")
+}],
 "loop": true,
-"name": &"new_animation",
-"speed": 5.0
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r2c4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfj5b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8gf7")
+}],
+"loop": false,
+"name": &"windup",
+"speed": 6.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mwhe"]
 atlas = ExtResource("2_ih4cu")
 region = Rect2(50, 48, 12, 15)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wbc43"]
-radius = 7.0
-height = 18.0
+[sub_resource type="Gradient" id="Gradient_q8gf7"]
+colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rj3aj"]
+gradient = SubResource("Gradient_q8gf7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oiitb"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 18.0
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+gravity = Vector3(0, -50, 0)
+color_ramp = SubResource("GradientTexture1D_rj3aj")
+turbulence_enabled = true
+turbulence_noise_strength = 20.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6r2c4"]
+radius = 9.0
+height = 28.0
 
 [sub_resource type="CircleShape2D" id="2"]
 radius = 75.0
@@ -52,14 +132,24 @@ script = ExtResource("1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fpaif")
-animation = &"new_animation"
+animation = &"idle"
+autoplay = "idle"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture_filter = 1
 texture = SubResource("AtlasTexture_8mwhe")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(2, 5)
+amount = 15
+draw_order = 2
+trail_lifetime = 0.5
+trail_sections = 20
+process_material = SubResource("ParticleProcessMaterial_oiitb")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_wbc43")
+shape = SubResource("CapsuleShape2D_6r2c4")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_max_distance = 50.0
@@ -76,13 +166,12 @@ shape = SubResource("2")
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DamageArea"]
-position = Vector2(1, 0)
-polygon = PackedVector2Array(12, 0, 11, -7, 7, -13, 17, -16, 21, -8, 22, 0, 21, 8, 17, 16, 7, 13, 11, 7)
+polygon = PackedVector2Array(16, -10, 12, -17, 0, -25, 10, -24, 21, -19, 26, -10, 28, 0, 26, 10, 21, 19, 10, 24, 0, 25, 12, 17, 16, 10, 18, 0)
 
 [node name="Indicator" type="Polygon2D" parent="DamageArea"]
 visible = false
 color = Color(1, 0, 0, 0.509804)
-polygon = PackedVector2Array(6, -14, 19, -18, 24, -8, 25, 0, 24, 8, 19, 18, 6, 14, 10, 7, 11, 0, 10, -7)
+polygon = PackedVector2Array(16, -10, 12, -17, 0, -25, 10, -24, 21, -19, 26, -10, 28, 0, 26, 10, 21, 19, 10, 24, 0, 25, 12, 17, 16, 10, 18, 0)
 
 [node name="PathTimer" type="Timer" parent="."]
 wait_time = 0.4
@@ -122,6 +211,11 @@ monster = NodePath("../..")
 [node name="Attacking" type="Node" parent="StateMachine" node_paths=PackedStringArray("monster")]
 script = ExtResource("8_fcqrr")
 monster = NodePath("../..")
+
+[node name="Reeling" type="Node" parent="StateMachine" node_paths=PackedStringArray("monster")]
+script = ExtResource("10_6r2c4")
+monster = NodePath("../..")
+metadata/_custom_type_script = "uid://b67wslm8oirdo"
 
 [connection signal="body_entered" from="AggroRange" to="." method="_on_AggroRange_body_entered"]
 [connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]

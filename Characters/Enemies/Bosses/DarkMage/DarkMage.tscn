@@ -1,23 +1,84 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1hnawkho7eos"]
+[gd_scene load_steps=19 format=3 uid="uid://d1hnawkho7eos"]
 
-[ext_resource type="Script" uid="uid://j7f61gjvewa4" path="res://StateMachine/StateMachine.gd" id="1_0mgtc"]
-[ext_resource type="Script" uid="uid://bl8vs7n6xpcio" path="res://Characters/Enemies/Bosses/DarkMage/DarkMage.gd" id="1_3rra0"]
+[ext_resource type="Script" uid="uid://drf17f1mu335f" path="res://StateMachine/StateMachine.gd" id="1_0mgtc"]
+[ext_resource type="Script" uid="uid://bnmya4eogwhr2" path="res://Characters/Enemies/Bosses/DarkMage/DarkMage.gd" id="1_3rra0"]
 [ext_resource type="Texture2D" uid="uid://b2dekgtow3y6x" path="res://Resources/enemies/dark-mage.png" id="2_30p61"]
 [ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="3_okdyn"]
-[ext_resource type="Script" uid="uid://b8874l3mm7fke" path="res://Characters/Enemies/Bosses/DarkMage/DarkMageStates/DarkMageIdleState.gd" id="4_rx5la"]
-[ext_resource type="Script" uid="uid://bdicxo1ecqt6u" path="res://Characters/Enemies/Bosses/DarkMage/DarkMageStates/DarkMageInvincibleState.gd" id="5_abxnd"]
-[ext_resource type="Script" uid="uid://bhiisjjxr4nei" path="res://Characters/Enemies/Bosses/DarkMage/DarkMageStates/DarkMageAttackState.gd" id="6_ki4rp"]
+[ext_resource type="Script" uid="uid://dlg1hg2cirujf" path="res://Characters/Enemies/Bosses/DarkMage/DarkMageStates/DarkMageIdleState.gd" id="4_rx5la"]
+[ext_resource type="Script" uid="uid://b2r3ymev6pg77" path="res://Characters/Enemies/Bosses/DarkMage/DarkMageStates/DarkMageInvincibleState.gd" id="5_abxnd"]
+[ext_resource type="Script" uid="uid://bq4x580cxpfxf" path="res://Characters/Enemies/Bosses/DarkMage/DarkMageStates/DarkMageAttackState.gd" id="6_ki4rp"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w7ucd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvjc4"]
+atlas = ExtResource("2_30p61")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jbuy"]
+atlas = ExtResource("2_30p61")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfwn5"]
+atlas = ExtResource("2_30p61")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6ofm"]
+atlas = ExtResource("2_30p61")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6ld8"]
+atlas = ExtResource("2_30p61")
+region = Rect2(96, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqdbs"]
+atlas = ExtResource("2_30p61")
+region = Rect2(0, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_davsa"]
+atlas = ExtResource("2_30p61")
+region = Rect2(48, 96, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7r60"]
+atlas = ExtResource("2_30p61")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0r8tm"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvjc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jbuy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfwn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6ofm")
+}],
+"loop": true,
+"name": &"cast_orb",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e6ld8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqdbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_davsa")
+}],
+"loop": true,
+"name": &"cast_staff",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7r60")
+}],
 "loop": true,
 "name": &"default",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
 "speed": 5.0
 }]
 
@@ -38,14 +99,15 @@ z_index = 4
 collision_layer = 10
 collision_mask = 13
 script = ExtResource("1_3rra0")
+health = 500
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_w7ucd")
-animation = &"new_animation"
+sprite_frames = SubResource("SpriteFrames_0r8tm")
+animation = &"cast_orb"
+autoplay = "default"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_30p61")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_d011f")
@@ -53,6 +115,9 @@ shape = SubResource("CapsuleShape2D_d011f")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 navigation_layers = 2
 debug_enabled = true
+
+[node name="CastLocation" type="Node2D" parent="."]
+position = Vector2(-18, -15)
 
 [node name="CannonTimer" type="Timer" parent="."]
 wait_time = 0.4
@@ -70,13 +135,13 @@ initial_state = NodePath("Idle")
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_rx5la")
 
-[node name="Invincible" type="Node" parent="StateMachine" node_paths=PackedStringArray("DarkMage")]
+[node name="Invincible" type="Node" parent="StateMachine" node_paths=PackedStringArray("dark_mage")]
 script = ExtResource("5_abxnd")
-DarkMage = NodePath("../..")
+dark_mage = NodePath("../..")
 
-[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("DarkMage")]
+[node name="Attack" type="Node" parent="StateMachine" node_paths=PackedStringArray("dark_mage")]
 script = ExtResource("6_ki4rp")
-DarkMage = NodePath("../..")
+dark_mage = NodePath("../..")
 
 [node name="StatusLabel" type="Label" parent="."]
 visible = false

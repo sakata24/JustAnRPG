@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bnisb47qe61bq" path="res://Abilities/BaseTypeAbility.tscn" id="1_844lo"]
 [ext_resource type="SpriteFrames" uid="uid://bo4qe5bist8cv" path="res://Abilities/Animations/ChargeSprite.tres" id="2_4be8l"]
-[ext_resource type="Script" uid="uid://b03vjondo628g" path="res://Abilities/AbilityScripts/Charge.gd" id="2_42sja"]
+[ext_resource type="Script" uid="uid://bheax13ijm4i7" path="res://Abilities/AbilityScripts/Charge.gd" id="2_42sja"]
 
 [node name="AbilityBody" instance=ExtResource("1_844lo")]
 script = ExtResource("2_42sja")

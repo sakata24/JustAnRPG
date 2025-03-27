@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cqtbn2dl7psx"]
 
-[ext_resource type="Script" uid="uid://br5xk78oo32jw" path="res://Characters/NPCs/Tome.gd" id="1_vaik0"]
+[ext_resource type="Script" uid="uid://c0thk3poh7lbq" path="res://Characters/NPCs/Tome.gd" id="1_vaik0"]
 [ext_resource type="Texture2D" uid="uid://cs8cp06d6ocpq" path="res://Resources/book.png" id="2_wkfyd"]
 [ext_resource type="Theme" uid="uid://bngt8jkm3fvb1" path="res://Resources/hud_elements/default.theme" id="3_4nhfx"]
 [ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="4_oh6hq"]

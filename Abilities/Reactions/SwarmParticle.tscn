@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8pkvom6evwf4"]
+
+[ext_resource type="Script" uid="uid://rr3m1ly5h6yh" path="res://Abilities/Reactions/SwarmParticle.gd" id="1_pi5yf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pi5yf"]
+size = Vector2(4, 4)
+
+[node name="SwarmParticle" type="Area2D"]
+script = ExtResource("1_pi5yf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pi5yf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

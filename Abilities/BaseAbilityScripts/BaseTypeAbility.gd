@@ -10,7 +10,7 @@ var myModifiers = []
 var abilityID = ""
 var speed = 300
 var velocity = Vector2.ZERO
-var dmg = 10
+var dmg: int = 10
 var timeout = 1
 var lifetime = 1
 var cooldown = 0.1
@@ -50,7 +50,7 @@ func _physics_process(delta):
 
 # handles movement of bullet. Standard is a constant speed in a straight line.
 func handle_movement(delta):
-	myMovement.move_to(self, velocity.normalized() * delta * speed)
+	myMovement.apply_movement(self, delta)
 
 # on collision
 func _on_body_entered(body: PhysicsBody2D):
@@ -91,7 +91,7 @@ func get_new_reaction_priority_from_elements() -> int:
 		_: return 0
 
 # Handles collision when enemy is hit. Spells do not typically despawn.
-func handle_enemy_interaction(enemy: Node2D):
+func handle_enemy_interaction(enemy: Enemy):
 	enemy._hit(self.dmg, self.element, self.element, self.spell_caster)
 
 # handles other things like walls
@@ -99,21 +99,22 @@ func handle_other_interaction(thing: Node2D):
 	pass
 
 # Handles reaction interactions with other spells
-func _on_area_entered(area):
-	# make sure spells cant interact twice
-	remove_interactability()
-	# make sure only one spell handles it
-	if area.is_in_group("skills") and self.is_reaction_owner(area):
-		call_deferred("handle_reaction", area)
-	else:
-		return
+func _on_area_entered(area: Area2D):
+	if area.is_in_group("skills"):
+		# make sure spells cant interact twice
+		remove_interactability()
+		# make sure only one spell handles it
+		if area.is_in_group("skills") and self.is_reaction_owner(area):
+			call_deferred("handle_reaction", area)
+		else:
+			return
 
 # makes self un interactable after collision
 func remove_interactability():
 	set_collision_layer_value(3, false)
 	set_collision_mask_value(3, false)
-
-func _on_LifetimeTimer_timeout():
+	
+func _on_lifetime_timer_timeout() -> void:
 	despawn()
 
 func despawn():

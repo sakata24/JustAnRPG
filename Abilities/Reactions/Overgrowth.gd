@@ -1,3 +1,7 @@
+# Overgrowth:
+# Creation: growth + construct
+# convert the construct spell to growth type
+
 class_name OvergrowthReaction extends Reaction
 
 func init(reaction_components: Dictionary):

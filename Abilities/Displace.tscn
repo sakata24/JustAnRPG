@@ -2,13 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://bnisb47qe61bq" path="res://Abilities/BaseTypeAbility.tscn" id="1_8vawm"]
 [ext_resource type="SpriteFrames" uid="uid://y0xnhl5pqtm" path="res://Abilities/Animations/DisplaceSprite.tres" id="2_itr17"]
-[ext_resource type="Script" uid="uid://blb67hwlmmrv5" path="res://Abilities/AbilityScripts/Displace.gd" id="2_ss0er"]
+[ext_resource type="Script" uid="uid://dtlcgelfpl6t5" path="res://Abilities/AbilityScripts/Displace.gd" id="2_ss0er"]
 
 [node name="AbilityBody" instance=ExtResource("1_8vawm")]
 script = ExtResource("2_ss0er")
+
+[node name="CollisionPolygon2D" parent="." index="0"]
+polygon = PackedVector2Array(6, -8, 8, 0, 6, 8, -8, 3, -8, -3)
 
 [node name="Texture" parent="." index="2"]
 visible = false
 
 [node name="AnimatedSprite2D" parent="." index="3"]
+scale = Vector2(1, 1)
 sprite_frames = ExtResource("2_itr17")

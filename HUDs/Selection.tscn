@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d14papl6dxsqu"]
 
-[ext_resource type="Script" uid="uid://2bra00vnbtfe" path="res://HUDs/Selection.gd" id="1_cue40"]
+[ext_resource type="Script" uid="uid://clneri5s5sfrn" path="res://HUDs/Selection.gd" id="1_cue40"]
 [ext_resource type="Texture2D" uid="uid://dejxum604wg2s" path="res://Resources/2D Pixel Dungeon Asset Pack/items and trap_animation/flasks/flasks_1_1.png" id="2_dvfnu"]
 [ext_resource type="Theme" uid="uid://bngt8jkm3fvb1" path="res://Resources/hud_elements/default.theme" id="2_lgskx"]
 

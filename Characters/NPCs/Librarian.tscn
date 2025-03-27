@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://ceqvkhki38wwr"]
+[gd_scene load_steps=11 format=3 uid="uid://ceqvkhki38wwr"]
 
-[ext_resource type="Script" uid="uid://c142uftxhe4gx" path="res://Characters/NPCs/Librarian.gd" id="1_dpsci"]
+[ext_resource type="Script" uid="uid://b4m2erald7q03" path="res://Characters/NPCs/Librarian.gd" id="1_dpsci"]
 [ext_resource type="Texture2D" uid="uid://dan0j4bwdb37c" path="res://Resources/warlock.png" id="2_6dfoj"]
 [ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="3_s2qmh"]
+[ext_resource type="PackedScene" uid="uid://b87627nrcya2c" path="res://HUDs/Shop.tscn" id="4_pg1vt"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxb7v"]
 radius = 25.0
@@ -86,6 +87,13 @@ size_flags_horizontal = 3
 theme = SubResource("Theme_lpuhh")
 text = "shop"
 
+[node name="Shop" parent="." instance=ExtResource("4_pg1vt")]
+visible = false
+
+[node name="SpriteTimer" type="Timer" parent="."]
+wait_time = 0.4
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="SpriteTimer" to="." method="_on_timer_timeout"]

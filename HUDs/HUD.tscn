@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://76xj3tuaqt16"]
 
-[ext_resource type="Script" uid="uid://ps2gh5rpcoh2" path="res://HUDs/HUD.gd" id="1"]
+[ext_resource type="Script" uid="uid://u7bsufm6x1io" path="res://HUDs/HUD.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://o7m3yeirq5vk" path="res://Resources/fonts/KiriFont.ttf" id="2"]
 [ext_resource type="Theme" uid="uid://bngt8jkm3fvb1" path="res://Resources/hud_elements/default.theme" id="2_2uc2n"]
 [ext_resource type="PackedScene" uid="uid://jb02v63no31m" path="res://Resources/hud_elements/SkillIcon.tscn" id="3_e3bud"]

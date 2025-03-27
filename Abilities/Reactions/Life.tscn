@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://0nmb3xrsmgb3"]
+
+[ext_resource type="Script" uid="uid://cowxqjst61wap" path="res://Abilities/Reactions/Life.gd" id="1_idq7u"]
+[ext_resource type="PackedScene" uid="uid://dlyorhhq58k8w" path="res://Abilities/Reactions/LifeLarvae.tscn" id="2_1cuwq"]
+
+[node name="Life" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_idq7u")
+
+[node name="LifetimeTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="LifeLarvaeList" type="Node2D" parent="."]
+
+[node name="LifeLarvae" parent="LifeLarvaeList" instance=ExtResource("2_1cuwq")]
+position = Vector2(0, -7)
+
+[node name="LifeLarvae2" parent="LifeLarvaeList" instance=ExtResource("2_1cuwq")]
+position = Vector2(7, 0)
+
+[node name="LifeLarvae3" parent="LifeLarvaeList" instance=ExtResource("2_1cuwq")]
+position = Vector2(0, 7)
+
+[node name="LifeLarvae4" parent="LifeLarvaeList" instance=ExtResource("2_1cuwq")]
+position = Vector2(-7, 0)
+
+[connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

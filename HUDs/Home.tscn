@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccbqtiwfuron8"]
 
-[ext_resource type="Script" uid="uid://pg75f0681vpw" path="res://HUDs/Home.gd" id="1"]
+[ext_resource type="Script" uid="uid://gy7gmodgfb14" path="res://HUDs/Home.gd" id="1"]
 [ext_resource type="Theme" uid="uid://bngt8jkm3fvb1" path="res://Resources/hud_elements/default.theme" id="2_axxtm"]
 
 [node name="Home" type="CanvasLayer"]

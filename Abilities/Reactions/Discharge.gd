@@ -1,3 +1,7 @@
+# Discharge:
+# Creation: construct + entropy
+# spawn a damaging AOE around the source spell
+
 class_name DischargeReaction extends AreaReaction
 
 const BASE_EMISSION_RADIUS = 64

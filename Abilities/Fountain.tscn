@@ -1,17 +1,16 @@
 [gd_scene load_steps=4 format=3 uid="uid://m50qcfm1r50t"]
 
 [ext_resource type="PackedScene" uid="uid://bnisb47qe61bq" path="res://Abilities/BaseTypeAbility.tscn" id="1_83eyt"]
-[ext_resource type="Script" uid="uid://dsrh6ar50jvw1" path="res://Abilities/AbilityScripts/Fountain.gd" id="2_a4523"]
+[ext_resource type="Script" uid="uid://co5d1swetxtck" path="res://Abilities/AbilityScripts/Fountain.gd" id="2_a4523"]
 [ext_resource type="SpriteFrames" uid="uid://bh3g6addnd6jh" path="res://Abilities/Animations/Spells/FountainSprite.tres" id="3_dgs32"]
 
 [node name="SpellBody" instance=ExtResource("1_83eyt")]
 script = ExtResource("2_a4523")
 
 [node name="CollisionPolygon2D" parent="." index="0"]
-polygon = PackedVector2Array(12, -12, 16, -4, 16, 4, 12, 12, 4, 16, -4, 16, -12, 12, -16, 4, -16, -4, -12, -12, -4, -16, 4, -16)
+polygon = PackedVector2Array(11, -18, 29, -11, 32, 0, 32, 6, 26, 12, 12, 16, -12, 16, -26, 12, -32, 6, -32, 0, -30, -11, -12, -18)
 
 [node name="LifetimeTimer" parent="." index="1"]
-wait_time = 1.2
 autostart = true
 
 [node name="Texture" parent="." index="2"]
@@ -19,6 +18,7 @@ visible = false
 polygon = PackedVector2Array(12, -12, 16, -4, 16, 4, 12, 12, 4, 16, -4, 16, -12, 12, -16, 4, -16, -4, -12, -12, -4, -16, 4, -16)
 
 [node name="AnimatedSprite2D" parent="." index="3"]
+position = Vector2(0, -16)
 scale = Vector2(2, 2)
 sprite_frames = ExtResource("3_dgs32")
 animation = &"hit"

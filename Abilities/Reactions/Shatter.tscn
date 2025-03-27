@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpw4fwdf5q47y"]
 
-[ext_resource type="Script" uid="uid://dfiqxerufojwe" path="res://Abilities/Reactions/Shatter.gd" id="1_6aelp"]
+[ext_resource type="Script" uid="uid://ec0er68qwdav" path="res://Abilities/Reactions/Shatter.gd" id="1_6aelp"]
 [ext_resource type="Texture2D" uid="uid://b6ep7weogfsrh" path="res://Resources/abilities/shatter-sprite.png" id="2_kj5lm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tklnu"]

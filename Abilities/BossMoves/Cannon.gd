@@ -4,7 +4,7 @@ extends Node2D
 @export var IMPACT_DISTANCE := 20
 @export var RADIUS := 10
 
-var player = null
+var player: Player = null
 
 func _ready() -> void:
 	var mesh = SphereMesh.new()

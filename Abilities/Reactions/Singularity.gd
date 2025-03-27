@@ -1,3 +1,7 @@
+# Singularity:
+# Creation: sunder + wither
+# suck enemies in towards the source
+
 class_name SingularityReaction extends AreaReaction
 
 var my_parent

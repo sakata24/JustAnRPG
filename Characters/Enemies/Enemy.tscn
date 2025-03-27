@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cpye3os65dmbp"]
 
-[ext_resource type="Script" uid="uid://dr56sopvt4gok" path="res://Characters/Enemies/Enemy.gd" id="1_p10lq"]
-[ext_resource type="Script" uid="uid://j7f61gjvewa4" path="res://StateMachine/StateMachine.gd" id="2_muc3k"]
+[ext_resource type="Script" uid="uid://dcwmuku6njwo7" path="res://Characters/Enemies/Enemy.gd" id="1_p10lq"]
+[ext_resource type="Script" uid="uid://drf17f1mu335f" path="res://StateMachine/StateMachine.gd" id="2_muc3k"]
 
 [node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_p10lq")

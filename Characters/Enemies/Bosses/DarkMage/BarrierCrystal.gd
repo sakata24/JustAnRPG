@@ -6,9 +6,10 @@ var invincible := false
 
 func _ready():
 	# my health
-	health = 10
+	health = 50
 	# max health
-	maxHealth = 10
+	maxHealth = 50
+	cc_immune = true
 
 func _process(delta: float) -> void:
 	pass

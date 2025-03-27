@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbilityColor" load_steps=2 format=3 uid="uid://clkotsu10hla8"]
 
-[ext_resource type="Script" uid="uid://ctgl6f27piaj1" path="res://Resources/AbilityColors.gd" id="1_yxfqx"]
+[ext_resource type="Script" uid="uid://mu6i2dha5gg0" path="res://Resources/AbilityColors.gd" id="1_yxfqx"]
 
 [resource]
 script = ExtResource("1_yxfqx")

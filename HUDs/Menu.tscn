@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://d37cep1ypwea6"]
 
-[ext_resource type="Script" uid="uid://oplysqleiak2" path="res://HUDs/Menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://6kp8h0strgpc" path="res://HUDs/Menu.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://o7m3yeirq5vk" path="res://Resources/fonts/KiriFont.ttf" id="2"]
 [ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="3_w5m8w"]
 [ext_resource type="Theme" uid="uid://bngt8jkm3fvb1" path="res://Resources/hud_elements/default.theme" id="4_44w5e"]
@@ -37,7 +37,7 @@ script = ExtResource("1")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color(0, 0, 0, 0.9)
+color = Color(0, 0, 0, 0.392157)
 
 [node name="MenuLabel" type="Label" parent="."]
 anchors_preset = 5
@@ -54,7 +54,6 @@ label_settings = SubResource("LabelSettings_0pibi")
 horizontal_alignment = 3
 
 [node name="QuitConfirm" type="ConfirmationDialog" parent="."]
-initial_position = 1
 dialog_text = "Exit the game?"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -69,17 +68,11 @@ offset_right = 31.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 10
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_w5m8w")
 text = "QUIT"
-
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_w5m8w")
-text = "SETTINGS"
 
 [node name="SaveButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -117,7 +110,7 @@ offset_right = 55.0
 offset_bottom = 46.0
 grow_vertical = 2
 
-[node name="OptionButton1" type="OptionButton" parent="VBoxContainer2"]
+[node name="OptionButton" type="OptionButton" parent="VBoxContainer2"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_w5m8w")
 
@@ -194,9 +187,8 @@ horizontal_alignment = 2
 
 [connection signal="confirmed" from="QuitConfirm" to="." method="_on_QuitConfirm_confirmed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
-[connection signal="item_selected" from="VBoxContainer2/OptionButton1" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="VBoxContainer2/OptionButton" to="." method="_on_option_button_item_selected"]
 [connection signal="item_selected" from="VBoxContainer2/OptionButton2" to="." method="_on_option_button_2_item_selected"]
 [connection signal="item_selected" from="VBoxContainer2/OptionButton3" to="." method="_on_option_button_3_item_selected"]
 [connection signal="item_selected" from="VBoxContainer2/OptionButton4" to="." method="_on_option_button_4_item_selected"]

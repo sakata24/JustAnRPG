@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx6qgbly3aoao"]
+[gd_scene load_steps=11 format=3 uid="uid://dx6qgbly3aoao"]
 
 [ext_resource type="Texture2D" uid="uid://dx0ij8xbgaqx7" path="res://Resources/knight.png" id="1_7g0u7"]
-[ext_resource type="Script" uid="uid://b1emgdgefqsqo" path="res://Characters/NPCs/Armorer.gd" id="1_jonnm"]
+[ext_resource type="Script" uid="uid://ur5bhu02hdro" path="res://Characters/NPCs/Armorer.gd" id="1_jonnm"]
 [ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="2_fytsc"]
+[ext_resource type="PackedScene" uid="uid://b87627nrcya2c" path="res://HUDs/Shop.tscn" id="4_jumf1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dxb7v"]
 radius = 25.0
@@ -85,6 +86,9 @@ size_flags_horizontal = 3
 theme = SubResource("Theme_lpuhh")
 disabled = true
 text = "shop"
+
+[node name="Shop" parent="." instance=ExtResource("4_jumf1")]
+visible = false
 
 [node name="SpriteTimer" type="Timer" parent="."]
 wait_time = 0.5

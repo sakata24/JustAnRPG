@@ -1,13 +1,16 @@
-[gd_scene load_steps=17 format=3 uid="uid://dda6n6o12t38y"]
+[gd_scene load_steps=20 format=3 uid="uid://dda6n6o12t38y"]
 
-[ext_resource type="Script" uid="uid://cdxge7awwjj0a" path="res://Main.gd" id="1"]
+[ext_resource type="Script" uid="uid://bsujmysejgy4k" path="res://Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cbiw1tglncahn" path="res://Maps/Home.tscn" id="2_oh4kf"]
 [ext_resource type="PackedScene" uid="uid://83qg0j5exfyc" path="res://Characters/Player.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://76xj3tuaqt16" path="res://HUDs/HUD.tscn" id="4"]
+[ext_resource type="Script" uid="uid://5usjmpb66eia" path="res://Characters/PlayerCamera.gd" id="4_wkp8b"]
 [ext_resource type="PackedScene" uid="uid://d37cep1ypwea6" path="res://HUDs/Menu.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://d14papl6dxsqu" path="res://HUDs/Selection.tscn" id="6_7rc56"]
 [ext_resource type="Texture2D" uid="uid://cu3clq06ceo3a" path="res://Resources/hud_elements/click_sprites.png" id="6_f2si5"]
 [ext_resource type="PackedScene" uid="uid://cpkd7jx2ts1lw" path="res://HUDs/Death.tscn" id="6_m4you"]
+[ext_resource type="AudioStream" uid="uid://bb15t6j533uux" path="res://Resources/audio/music/Dungeon_Delving.mp3" id="10_20pc6"]
+[ext_resource type="Script" uid="uid://bwry02qor847m" path="res://BGMPlayer.gd" id="10_wkp8b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cr0tb"]
 atlas = ExtResource("6_f2si5")
@@ -100,13 +103,12 @@ position = Vector2(168, 104)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
 position_smoothing_speed = 20.0
+script = ExtResource("4_wkp8b")
 
 [node name="HUD" parent="." instance=ExtResource("4")]
-layer = 0
 
 [node name="Menu" parent="." instance=ExtResource("5")]
 process_mode = 3
-layer = 1
 visible = false
 
 [node name="Selection" parent="." instance=ExtResource("6_7rc56")]
@@ -127,4 +129,10 @@ light_mask = 3
 position = Vector2(168, 104)
 color = Color(0, 0, 0, 1)
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_20pc6")
+volume_db = -5.0
+script = ExtResource("10_wkp8b")
+
 [connection signal="animation_finished" from="ClickAnimation" to="." method="_on_click_animation_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]

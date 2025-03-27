@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://gh08h6cy5y6d"]
 
 [ext_resource type="PackedScene" uid="uid://bnisb47qe61bq" path="res://Abilities/BaseTypeAbility.tscn" id="1_djptl"]
-[ext_resource type="Script" uid="uid://bfbxt1fs7s5vw" path="res://Abilities/AbilityScripts/Fissure.gd" id="2_ptot3"]
+[ext_resource type="Script" uid="uid://du1ia15w1a4e5" path="res://Abilities/AbilityScripts/Fissure.gd" id="2_ptot3"]
 [ext_resource type="SpriteFrames" uid="uid://ccns3v2dh1v7" path="res://Abilities/Animations/Spells/FissureSprite.tres" id="3_7kq0c"]
 
 [node name="SpellBody" instance=ExtResource("1_djptl")]
@@ -11,7 +11,6 @@ script = ExtResource("2_ptot3")
 polygon = PackedVector2Array(-50, -12, 50, -12, 50, 12, -50, 12)
 
 [node name="LifetimeTimer" parent="." index="1"]
-wait_time = 4.5
 autostart = true
 
 [node name="TickTimer" type="Timer" parent="." index="2"]

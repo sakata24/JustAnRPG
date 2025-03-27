@@ -1,475 +1,154 @@
-[gd_scene load_steps=26 format=3 uid="uid://b87627nrcya2c"]
+[gd_scene load_steps=3 format=3 uid="uid://b87627nrcya2c"]
 
-[ext_resource type="Script" uid="uid://cqenh65lieqe4" path="res://HUDs/Shop.gd" id="1_3qepl"]
+[ext_resource type="Script" uid="uid://cfjn1120750p4" path="res://HUDs/Shop.gd" id="1_3qepl"]
 [ext_resource type="Theme" uid="uid://bngt8jkm3fvb1" path="res://Resources/hud_elements/default.theme" id="2_22pmb"]
-[ext_resource type="Texture2D" uid="uid://dan0j4bwdb37c" path="res://Resources/warlock.png" id="2_e63p4"]
-[ext_resource type="Texture2D" uid="uid://em1agvjl7ifw" path="res://pixil-frame-0.png" id="2_t715p"]
-[ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="3_t715p"]
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_yi03b"]
-viewport_path = NodePath("SubViewport")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t715p"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_b75td"]
-color = Color(0.478431, 0, 0.00784314, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_t715p"]
-color = Color(0.478431, 0, 0.00784314, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b75td"]
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_8s02s"]
-color = Color(1, 0.85098, 0.4, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_4u4lg"]
-color = Color(1, 0.85098, 0.4, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_jr60a"]
-color = Color(0.211765, 0.780392, 0.172549, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_3avli"]
-color = Color(0.211765, 0.780392, 0.172549, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_p8qt7"]
-color = Color(0.4, 0.235294, 0.2, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_omb54"]
-color = Color(0.4, 0.235294, 0.2, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_cbmuw"]
-color = Color(0.509804, 0.694118, 1, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_fgs8u"]
-color = Color(0.509804, 0.694118, 1, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_rtdxi"]
-color = Color(0.34902, 0.105882, 0.509804, 1)
-thickness = 10
-
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_eqj8p"]
-color = Color(0.34902, 0.105882, 0.509804, 1)
-thickness = 10
-
-[sub_resource type="Animation" id="Animation_t715p"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_3a5f4"]
-resource_name = "ShopKeeperAnimation"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_b75td"]
-_data = {
-&"RESET": SubResource("Animation_t715p"),
-&"ShopKeeperAnimation": SubResource("Animation_3a5f4")
-}
-
-[sub_resource type="Curve" id="Curve_t715p"]
-_data = [Vector2(0.116667, 1), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="CurveTexture" id="CurveTexture_b75td"]
-width = 250
-curve = SubResource("Curve_t715p")
 
 [node name="Shop" type="CanvasLayer" groups=["windows"]]
-layer = 0
+layer = 2
 script = ExtResource("1_3qepl")
 
 [node name="ScreenDimmer" type="ColorRect" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 0.9)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.333333)
 
-[node name="BorderContainer" type="MarginContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-theme_override_constants/margin_left = 50
-theme_override_constants/margin_top = 50
-theme_override_constants/margin_right = 50
-theme_override_constants/margin_bottom = 50
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12549, 0, 0.215686, 0.392157)
 
-[node name="BorderOutside" type="ColorRect" parent="BorderContainer"]
-light_mask = 3
-layout_mode = 2
-color = Color(0.27451, 0.27451, 0.27451, 1)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="BorderContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="BGColor" type="ColorRect" parent="BorderContainer/MarginContainer"]
-layout_mode = 2
-color = Color(0.27451, 0, 0.156863, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="BorderContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="BorderInside" type="ColorRect" parent="BorderContainer/MarginContainer/MarginContainer"]
-light_mask = 3
-layout_mode = 2
-color = Color(0.27451, 0.27451, 0.27451, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="BorderContainer/MarginContainer/MarginContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 2
-theme_override_constants/margin_top = 2
-theme_override_constants/margin_right = 2
-theme_override_constants/margin_bottom = 2
-
-[node name="BGColor" type="ColorRect" parent="BorderContainer/MarginContainer/MarginContainer/MarginContainer"]
-layout_mode = 2
-color = Color(0.27451, 0, 0.156863, 1)
-
-[node name="HBoxContainer" type="HBoxContainer" parent="BorderContainer/MarginContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="BorderContainer/MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="BorderContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-texture = ExtResource("2_t715p")
-stretch_mode = 4
-
-[node name="TextureRect2" type="TextureRect" parent="BorderContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
-size_flags_vertical = 10
-texture = ExtResource("2_t715p")
-stretch_mode = 4
-flip_v = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BorderContainer/MarginContainer/MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 10
-
-[node name="TextureRect" type="TextureRect" parent="BorderContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-texture = ExtResource("2_t715p")
-stretch_mode = 4
-flip_h = true
-
-[node name="TextureRect2" type="TextureRect" parent="BorderContainer/MarginContainer/MarginContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 10
-texture = ExtResource("2_t715p")
-stretch_mode = 4
-flip_h = true
-flip_v = true
-
-[node name="ContentContainer" type="MarginContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-theme_override_constants/margin_left = 75
-theme_override_constants/margin_top = 75
-theme_override_constants/margin_right = 75
-theme_override_constants/margin_bottom = 75
-
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/VBoxContainer"]
-clip_contents = true
-layout_mode = 2
-theme_override_constants/separation = 20
-
-[node name="TextureRect" type="TextureRect" parent="ContentContainer/VBoxContainer/HBoxContainer"]
-light_mask = 2
-layout_mode = 2
-size_flags_horizontal = 0
-texture = SubResource("ViewportTexture_yi03b")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="ContentContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
+[node name="SplitContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 0
-
-[node name="SpellDescription" type="RichTextLabel" parent="ContentContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/normal_font = ExtResource("3_t715p")
-theme_override_font_sizes/normal_font_size = 10
-bbcode_enabled = true
-
-[node name="VBoxContainer2" type="VBoxContainer" parent="ContentContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="TitleSpellIcon" type="TextureRect" parent="ContentContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2"]
-light_mask = 3
-layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 3
-expand_mode = 3
-stretch_mode = 4
-
-[node name="CostLabel" type="Label" parent="ContentContainer/VBoxContainer/HBoxContainer/HBoxContainer/VBoxContainer2"]
-layout_mode = 2
 theme = ExtResource("2_22pmb")
+
+[node name="LVBoxContainer" type="VBoxContainer" parent="Control/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/SplitContainer/LVBoxContainer"]
+layout_mode = 2
+
+[node name="SpriteNode" type="Control" parent="Control/SplitContainer/LVBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 150)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/SplitContainer/LVBoxContainer/HBoxContainer/SpriteNode"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Title" type="Label" parent="Control/SplitContainer/LVBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 18
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 32
+text = "text"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ContentContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/separation = 10
-
-[node name="TitleContainer" type="HBoxContainer" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 2
-
-[node name="Label" type="Label" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/TitleContainer"]
-layout_mode = 2
-theme = ExtResource("2_22pmb")
-theme_override_font_sizes/font_size = 50
-text = "Skill Shop"
-
-[node name="HSeparator" type="HSeparator" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-light_mask = 3
-layout_mode = 2
-theme_override_constants/separation = -1
-
-[node name="ExpContainer" type="HBoxContainer" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="sunder" type="Button" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_22pmb")
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0.478431, 0, 0.00784314, 1)
-theme_override_colors/font_focus_color = Color(0.478431, 0, 0.00784314, 1)
-theme_override_colors/font_pressed_color = Color(0.478431, 0, 0.00784314, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_t715p")
-theme_override_styles/hover = SubResource("StyleBoxLine_b75td")
-theme_override_styles/pressed = SubResource("StyleBoxLine_t715p")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_b75td")
-toggle_mode = true
-text = "10"
-
-[node name="entropy" type="Button" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_22pmb")
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(1, 0.85098, 0.4, 1)
-theme_override_colors/font_focus_color = Color(1, 0.85098, 0.4, 1)
-theme_override_colors/font_pressed_color = Color(1, 0.85098, 0.4, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_t715p")
-theme_override_styles/hover = SubResource("StyleBoxLine_8s02s")
-theme_override_styles/pressed = SubResource("StyleBoxLine_4u4lg")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_b75td")
-toggle_mode = true
-text = "10"
-
-[node name="growth" type="Button" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_22pmb")
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0.211765, 0.780392, 0.172549, 1)
-theme_override_colors/font_focus_color = Color(0.211765, 0.780392, 0.172549, 1)
-theme_override_colors/font_pressed_color = Color(0.211765, 0.780392, 0.172549, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_t715p")
-theme_override_styles/hover = SubResource("StyleBoxLine_jr60a")
-theme_override_styles/pressed = SubResource("StyleBoxLine_3avli")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_b75td")
-toggle_mode = true
-text = "10"
-
-[node name="construct" type="Button" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_22pmb")
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0.4, 0.235294, 0.2, 1)
-theme_override_colors/font_focus_color = Color(0.4, 0.235294, 0.2, 1)
-theme_override_colors/font_pressed_color = Color(0.4, 0.235294, 0.2, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_t715p")
-theme_override_styles/hover = SubResource("StyleBoxLine_p8qt7")
-theme_override_styles/pressed = SubResource("StyleBoxLine_omb54")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_b75td")
-toggle_mode = true
-text = "10"
-
-[node name="flow" type="Button" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_22pmb")
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0.509804, 0.694118, 1, 1)
-theme_override_colors/font_focus_color = Color(0.509804, 0.694118, 1, 1)
-theme_override_colors/font_pressed_color = Color(0.509804, 0.694118, 1, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_t715p")
-theme_override_styles/hover = SubResource("StyleBoxLine_cbmuw")
-theme_override_styles/pressed = SubResource("StyleBoxLine_fgs8u")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_b75td")
-toggle_mode = true
-text = "10"
-
-[node name="wither" type="Button" parent="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme = ExtResource("2_22pmb")
-theme_override_colors/font_hover_pressed_color = Color(1, 1, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_colors/font_color = Color(0.34902, 0.105882, 0.509804, 1)
-theme_override_colors/font_focus_color = Color(0.34902, 0.105882, 0.509804, 1)
-theme_override_colors/font_pressed_color = Color(0.34902, 0.105882, 0.509804, 1)
-theme_override_constants/outline_size = 5
-theme_override_font_sizes/font_size = 20
-theme_override_styles/focus = SubResource("StyleBoxEmpty_t715p")
-theme_override_styles/hover = SubResource("StyleBoxLine_rtdxi")
-theme_override_styles/pressed = SubResource("StyleBoxLine_eqj8p")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_b75td")
-toggle_mode = true
-text = "10"
-
-[node name="HSeparator" type="HSeparator" parent="ContentContainer/VBoxContainer"]
-light_mask = 3
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="ScrollContainer" type="ScrollContainer" parent="ContentContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="SkillContainer" type="HFlowContainer" parent="ContentContainer/VBoxContainer/ScrollContainer"]
+[node name="ItemList" type="ItemList" parent="Control/SplitContainer/LVBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/v_separation = 10
-
-[node name="LearnButton" type="Button" parent="ContentContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 10
-size_flags_stretch_ratio = 0.1
 theme = ExtResource("2_22pmb")
-theme_override_font_sizes/font_size = 20
-disabled = true
-text = "Learn"
+same_column_width = true
 
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-size = Vector2i(20, 20)
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/SplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("2_22pmb")
+theme_override_constants/separation = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
-light_mask = 3
-texture = ExtResource("2_e63p4")
-offset = Vector2(10, 10)
-hframes = 2
+[node name="TextureRect" type="TextureRect" parent="Control/SplitContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_22pmb")
+stretch_mode = 5
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewport"]
-root_node = NodePath("../Sprite2D")
-libraries = {
-&"": SubResource("AnimationLibrary_b75td")
-}
-
-[node name="HighlightHolder" type="Control" parent="."]
+[node name="PurchasedLabel" type="Label" parent="Control/SplitContainer/VBoxContainer/TextureRect"]
 visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
-mouse_filter = 2
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -10.0
+offset_right = 20.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+text = "Purchased!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="HighlightHolder"]
-rotation = -1.22173
-rect = Rect2(-400, -5, 800, 10)
+[node name="BuyButton" type="Button" parent="Control/SplitContainer/VBoxContainer"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Buy"
 
-[node name="PointLight2D" type="PointLight2D" parent="HighlightHolder/VisibleOnScreenNotifier2D"]
-light_mask = 3
-range_item_cull_mask = 2
-shadow_enabled = true
-texture = SubResource("CurveTexture_b75td")
-texture_scale = 5.0
-height = 5.0
+[node name="Price" type="Label" parent="Control/SplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 8
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 
-[node name="PointLight2D2" type="PointLight2D" parent="HighlightHolder/VisibleOnScreenNotifier2D"]
-light_mask = 2
-visibility_layer = 0
-position = Vector2(-20, -20)
-range_item_cull_mask = 2
-shadow_enabled = true
-texture = SubResource("CurveTexture_b75td")
-texture_scale = 10.0
-height = 5.0
+[node name="OwnedCurrency" type="Label" parent="Control/SplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 3
 
-[node name="HighlightTimer" type="Timer" parent="HighlightHolder"]
-wait_time = 3.0
-one_shot = true
-autostart = true
+[node name="Description" type="Label" parent="Control/SplitContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 6
+text = "Select an item on the left"
+horizontal_alignment = 1
+autowrap_mode = 2
 
-[connection signal="toggled" from="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer/sunder" to="." method="_on_sunder_toggled"]
-[connection signal="toggled" from="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer/entropy" to="." method="_on_entropy_toggled"]
-[connection signal="toggled" from="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer/growth" to="." method="_on_growth_toggled"]
-[connection signal="toggled" from="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer/construct" to="." method="_on_construct_toggled"]
-[connection signal="toggled" from="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer/flow" to="." method="_on_flow_toggled"]
-[connection signal="toggled" from="ContentContainer/VBoxContainer/HBoxContainer/VBoxContainer/ExpContainer/wither" to="." method="_on_wither_toggled"]
-[connection signal="pressed" from="ContentContainer/VBoxContainer/LearnButton" to="." method="_on_learn_button_pressed"]
-[connection signal="screen_exited" from="HighlightHolder/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="timeout" from="HighlightHolder/HighlightTimer" to="." method="_on_highlight_timer_timeout"]
+[connection signal="item_selected" from="Control/SplitContainer/LVBoxContainer/ItemList" to="." method="_on_item_list_item_selected"]
+[connection signal="pressed" from="Control/SplitContainer/VBoxContainer/BuyButton" to="." method="_on_buy_button_pressed"]

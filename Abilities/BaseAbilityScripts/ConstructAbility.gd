@@ -12,3 +12,8 @@ func get_reaction_scene(reactant_element: String) -> Node2D:
 		"flow": return SkillSceneHandler.get_scene_by_name("justice")
 		"wither": return SkillSceneHandler.get_scene_by_name("extinction")
 		_: return null
+
+func init(skill_dict: Dictionary, cast_target: Vector2, caster: Node2D):
+	# my damage scales with my size
+	dmg *= scale.x
+	super.init(skill_dict, cast_target, caster)

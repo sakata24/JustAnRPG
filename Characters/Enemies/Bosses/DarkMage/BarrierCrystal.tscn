@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dxerac1hbknws"]
 
-[ext_resource type="Script" uid="uid://di8048hia06ln" path="res://Characters/Enemies/Bosses/DarkMage/BarrierCrystal.gd" id="1_y8xe1"]
+[ext_resource type="Script" uid="uid://dwqeb8cefre7y" path="res://Characters/Enemies/Bosses/DarkMage/BarrierCrystal.gd" id="1_y8xe1"]
 [ext_resource type="Texture2D" uid="uid://dlte838cyvcj" path="res://Resources/Crystal.png" id="2_h6b7p"]
 [ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="3_we5r7"]
 
@@ -48,10 +48,10 @@ shape = SubResource("CircleShape2D_t2f8s")
 modulate = Color(0.439216, 0.188235, 0.627451, 1)
 emitting = false
 amount = 100
-process_material = SubResource("ParticleProcessMaterial_ajd2i")
 lifetime = 2.0
 one_shot = true
 explosiveness = 0.5
+process_material = SubResource("ParticleProcessMaterial_ajd2i")
 
 [node name="StatusLabel" type="Label" parent="."]
 visible = false

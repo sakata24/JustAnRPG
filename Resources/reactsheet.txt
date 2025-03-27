@@ -1,0 +1,7 @@
+,sunder,entropy,construct,growth,flow,wither
+sunder,,blast,shatter,burst,break,singularity
+entropy,,,discharge,life,fork,sickness
+construct,,,,vine,justice,extinction
+growth,,,,,pursuit,extend
+flow,,,,,,swarm
+wither

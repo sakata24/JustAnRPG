@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmyojc688oa3f"]
 
-[ext_resource type="Script" uid="uid://df66prmkqaecl" path="res://HUDs/SkillMenu.gd" id="1_tifqh"]
+[ext_resource type="Script" uid="uid://bswopaqptomxx" path="res://HUDs/SkillMenu.gd" id="1_tifqh"]
 [ext_resource type="Texture2D" uid="uid://dylnl4hcv320u" path="res://Resources/icon.png" id="2_hjnh2"]
 [ext_resource type="PackedScene" uid="uid://jb02v63no31m" path="res://Resources/hud_elements/SkillIcon.tscn" id="3_r72yw"]
 

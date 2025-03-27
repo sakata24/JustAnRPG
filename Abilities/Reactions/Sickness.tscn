@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://mtfmebe5a6fp"]
 
-[ext_resource type="Script" uid="uid://45s5gcyienfe" path="res://Abilities/Reactions/Sickness.gd" id="1_07cfe"]
+[ext_resource type="Script" uid="uid://dqsu0f2jk3f1a" path="res://Abilities/Reactions/Sickness.gd" id="1_07cfe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n5vtr"]
 radius = 48.0

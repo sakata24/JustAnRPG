@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://djshger1h1fb5"]
+
+[ext_resource type="Texture2D" uid="uid://bl4bjpbncf41p" path="res://Resources/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_6afpp"]
+[ext_resource type="Script" uid="uid://cvsgry1kmbmkm" path="res://Maps/MapElements/ExitDoor.gd" id="1_k0d7l"]
+[ext_resource type="FontFile" uid="uid://wige0wqmw7c7" path="res://Resources/fonts/Early GameBoy.ttf" id="2_wrbht"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrbht"]
+atlas = ExtResource("1_6afpp")
+region = Rect2(127.727, 48, 16.2725, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k0d7l"]
+radius = 30.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1pud"]
+size = Vector2(16, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0d7l"]
+font = ExtResource("2_wrbht")
+font_size = 8
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.784314)
+
+[node name="ExitDoor" type="Node2D"]
+script = ExtResource("1_k0d7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_wrbht")
+
+[node name="ExitDoorArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoorArea"]
+shape = SubResource("CircleShape2D_k0d7l")
+
+[node name="ExitDoor" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitDoor"]
+shape = SubResource("RectangleShape2D_w1pud")
+
+[node name="ExitLabel" type="Label" parent="."]
+visible = false
+texture_filter = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -15.0
+offset_right = 16.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "EXIT"
+label_settings = SubResource("LabelSettings_k0d7l")
+
+[connection signal="body_entered" from="ExitDoorArea" to="." method="_on_exit_door_area_body_entered"]
+[connection signal="body_exited" from="ExitDoorArea" to="." method="_on_exit_door_area_body_exited"]
+[connection signal="input_event" from="ExitDoorArea" to="." method="_on_exit_door_area_input_event"]
+[connection signal="input_event" from="ExitDoor" to="." method="_on_exit_door_input_event"]

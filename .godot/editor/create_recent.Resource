@@ -1,6 +1,0 @@
-AbilityColor
-SpawnBehavior
-ImageTexture
-AtlasTexture
-SpriteFrames
-Resource

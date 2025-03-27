@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://cd05atimgf6u3"]
 
-[ext_resource type="Script" uid="uid://fpnqipxeyx4k" path="res://Abilities/BossMoves/IcathianRain.gd" id="1_ivdhr"]
-[ext_resource type="Script" uid="uid://b6k5oma55p6l6" path="res://Abilities/BossMoves/trail.gd" id="2_0mxce"]
+[ext_resource type="Script" uid="uid://84xqrhlmdefq" path="res://Abilities/BossMoves/IcathianRain.gd" id="1_ivdhr"]
+[ext_resource type="Script" uid="uid://c1hnwox6n4vw4" path="res://Abilities/BossMoves/trail.gd" id="2_0mxce"]
 [ext_resource type="Texture2D" uid="uid://dwu6nmx68uonm" path="res://Resources/abilities/enemy/icathian-rain-sprite.png" id="2_irbyj"]
 
 [sub_resource type="Gradient" id="Gradient_75e07"]

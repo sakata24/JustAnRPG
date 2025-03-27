@@ -2,12 +2,17 @@ class_name MonsterChaseState extends State
 
 @export var monster: Monster
 var chase_target: CharacterBody2D = null
+@onready var animation: AnimatedSprite2D = monster.get_node("AnimatedSprite2D")
+
+func enter():
+	animation.set_animation("idle")
+	animation.play()
 
 func update(delta: float):
 	if monster.velocity.x < 0:
-		monster.get_node("Sprite2D").flip_h = true
+		animation.flip_h = false
 	elif monster.velocity.x > 0:
-		monster.get_node("Sprite2D").flip_h = false
+		animation.flip_h = true
 
 func physics_update(delta: float):
 	if !chase_target:

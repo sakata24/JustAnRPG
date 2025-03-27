@@ -1,3 +1,7 @@
+# Blast:
+# Creation: sunder + entropy
+# spawns projectiles that will explode from the source of the reaction
+
 class_name BlastReaction extends Reaction
 
 var dmg
@@ -13,8 +17,8 @@ func init(reaction_components: Dictionary):
 	# reparent myself to main to not despawn when parents react and destroy themselves
 	reparent(parents["source"].get_parent(), true)
 	dmg = parents["source"].dmg + parents["reactant"].dmg
-	# set projectile location
-	init_projectiles(parents["source"])
+	# set projectiles dmg
+	init_projectiles(parents["source"].spell_caster)
 	# spawn reaction name
 	spawn_reaction_name("blast!", self, Color("#7a0002"), Color("#7a0002"))
 	# destroy my parents after getting all their data

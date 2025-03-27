@@ -1,3 +1,7 @@
+# Extend:
+# Creation: growth + wither
+# increase the lifetime of the spells and restart their timers
+
 class_name ExtendReaction extends Reaction
 
 func init(reaction_components: Dictionary):
@@ -6,4 +10,6 @@ func init(reaction_components: Dictionary):
 
 func extend_timers(reaction_components: Dictionary):
 	reaction_components["source"].get_node("LifetimeTimer").wait_time *= 1.5
+	reaction_components["source"].get_node("LifetimeTimer").start()
 	reaction_components["reactant"].get_node("LifetimeTimer").wait_time *= 1.5
+	reaction_components["reactant"].get_node("LifetimeTimer").start()

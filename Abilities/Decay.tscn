@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c13vw3m0wno8f"]
 
 [ext_resource type="PackedScene" uid="uid://bnisb47qe61bq" path="res://Abilities/BaseTypeAbility.tscn" id="1_hxqx3"]
-[ext_resource type="Script" uid="uid://dklu5vyseescy" path="res://Abilities/AbilityScripts/Decay.gd" id="2_1bo86"]
+[ext_resource type="Script" uid="uid://dij8raxuphahb" path="res://Abilities/AbilityScripts/Decay.gd" id="2_1bo86"]
 [ext_resource type="SpriteFrames" uid="uid://dsdv83g03ulaw" path="res://Abilities/Animations/DecaySprite.tres" id="2_ep70m"]
 
 [node name="AbilityBody" instance=ExtResource("1_hxqx3")]

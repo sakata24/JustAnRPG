@@ -1,0 +1,131 @@
+[gd_scene load_steps=17 format=3 uid="uid://dda6n6o12t38y"]
+
+[ext_resource type="Script" path="res://Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://cbiw1tglncahn" path="res://Maps/Home.tscn" id="2_oh4kf"]
+[ext_resource type="PackedScene" uid="uid://83qg0j5exfyc" path="res://Characters/Player.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://76xj3tuaqt16" path="res://HUDs/HUD.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://d37cep1ypwea6" path="res://HUDs/Menu.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://d14papl6dxsqu" path="res://HUDs/Selection.tscn" id="6_7rc56"]
+[ext_resource type="Texture2D" uid="uid://cu3clq06ceo3a" path="res://Resources/hud_elements/click_sprites.png" id="6_f2si5"]
+[ext_resource type="PackedScene" uid="uid://cpkd7jx2ts1lw" path="res://HUDs/Death.tscn" id="6_m4you"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cr0tb"]
+atlas = ExtResource("6_f2si5")
+region = Rect2(582, 0, 97, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4qyb"]
+atlas = ExtResource("6_f2si5")
+region = Rect2(485, 0, 97, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rjxf4"]
+atlas = ExtResource("6_f2si5")
+region = Rect2(388, 0, 97, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vhwl"]
+atlas = ExtResource("6_f2si5")
+region = Rect2(291, 0, 97, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64sr1"]
+atlas = ExtResource("6_f2si5")
+region = Rect2(194, 0, 97, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5uba6"]
+atlas = ExtResource("6_f2si5")
+region = Rect2(97, 0, 97, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kpf6h"]
+atlas = ExtResource("6_f2si5")
+region = Rect2(0, 0, 97, 97)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_33bx4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cr0tb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4qyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rjxf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vhwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64sr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5uba6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpf6h")
+}],
+"loop": false,
+"name": &"click",
+"speed": 25.0
+}]
+
+[node name="Main" type="Node2D"]
+process_mode = 3
+script = ExtResource("1")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(640, 360)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+z_index = -110
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1000.0
+offset_top = -1000.0
+offset_right = 2000.0
+offset_bottom = 2000.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.145098, 0.0745098, 0.101961, 1)
+
+[node name="Rooms" type="Node2D" parent="."]
+process_mode = 1
+z_index = -100
+z_as_relative = false
+
+[node name="Home" parent="Rooms" instance=ExtResource("2_oh4kf")]
+
+[node name="Player" parent="." groups=["Persist"] instance=ExtResource("3")]
+process_mode = 1
+position = Vector2(168, 104)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(2, 2)
+position_smoothing_speed = 20.0
+
+[node name="HUD" parent="." instance=ExtResource("4")]
+
+[node name="Menu" parent="." instance=ExtResource("5")]
+process_mode = 3
+visible = false
+
+[node name="Selection" parent="." instance=ExtResource("6_7rc56")]
+visible = false
+
+[node name="Death" parent="." instance=ExtResource("6_m4you")]
+visible = false
+
+[node name="ClickAnimation" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_33bx4")
+animation = &"click"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+light_mask = 3
+position = Vector2(168, 104)
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="ClickAnimation" to="." method="_on_click_animation_animation_finished"]

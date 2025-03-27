@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dxulnknqlsd2f"]
 
 [ext_resource type="PackedScene" uid="uid://bnisb47qe61bq" path="res://Abilities/BaseTypeAbility.tscn" id="1_jgk6h"]
-[ext_resource type="Script" uid="uid://cahn0gj6wpy7v" path="res://Abilities/AbilityScripts/Storm.gd" id="2_q3syg"]
+[ext_resource type="Script" uid="uid://w8iq7xsyl5ve" path="res://Abilities/AbilityScripts/Storm.gd" id="2_q3syg"]
 [ext_resource type="Texture2D" uid="uid://53kcs6futbat" path="res://Resources/abilities/storm-sprite-v2.png" id="3_h2ddf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ki2b1"]
@@ -54,7 +54,6 @@ script = ExtResource("2_q3syg")
 polygon = PackedVector2Array(36, -36, 48, -12, 48, 12, 36, 36, 12, 48, -12, 48, -36, 36, -48, 12, -48, -12, -36, -36, -12, -48, 12, -48)
 
 [node name="LifetimeTimer" parent="." index="1"]
-wait_time = 5.0
 autostart = true
 
 [node name="Texture" parent="." index="2"]

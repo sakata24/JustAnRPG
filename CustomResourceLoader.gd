@@ -32,7 +32,7 @@ func save_game():
 
 		# Call the node's save function.
 		var node_data = node.call("save")
-
+		print("Saved data for Node: ", node)
 		# JSON provides a static method to serialized JSON string.
 		var json_string = JSON.stringify(node_data)
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://2pdvk2ehyvfl"]
 
-[ext_resource type="Script" uid="uid://hs1g3royslk0" path="res://Abilities/Reactions/Overgrowth.gd" id="1_b80lu"]
+[ext_resource type="Script" uid="uid://dfm6cobkus5qp" path="res://Abilities/Reactions/Overgrowth.gd" id="1_b80lu"]
 
 [node name="Overgrowth" type="Node2D"]
 script = ExtResource("1_b80lu")

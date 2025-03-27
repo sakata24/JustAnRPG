@@ -4,6 +4,9 @@ class_name Trail extends Line2D
 @export var MAX_POINTS : int = 200
 var started = false
 
+func _ready():
+	started = true
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if started:

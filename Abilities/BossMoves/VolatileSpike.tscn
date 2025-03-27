@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://foe6afgvwd6q"]
+[gd_scene load_steps=23 format=3 uid="uid://foe6afgvwd6q"]
 
-[ext_resource type="Script" uid="uid://cmxifhnt7kxao" path="res://Abilities/BossMoves/VolatileSpike.gd" id="1_wnclj"]
+[ext_resource type="Script" uid="uid://cl3sww2rgpcwm" path="res://Abilities/BossMoves/VolatileSpike.gd" id="1_wnclj"]
 [ext_resource type="Texture2D" uid="uid://cex5hwm8nv0v" path="res://Resources/abilities/enemy/volatile-spike-sprite.png" id="2_b6olq"]
+[ext_resource type="AudioStream" uid="uid://d054y3qxbhak5" path="res://Resources/audio/sfx/crystal_break.wav" id="3_br6cw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vf6qq"]
 atlas = ExtResource("2_b6olq")
@@ -163,6 +164,9 @@ modulate = Color(0.439216, 0.188235, 0.627451, 1)
 position = Vector2(-4, 0)
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_65heq")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_br6cw")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

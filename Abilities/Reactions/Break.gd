@@ -1,3 +1,7 @@
+# Break:
+# Creation: sunder + flow
+# increase the size of the flow spell every tick of the timer
+
 class_name BreakReaction extends Reaction
 
 func init(reaction_components: Dictionary):

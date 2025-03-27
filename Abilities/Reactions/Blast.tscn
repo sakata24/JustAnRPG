@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://rgu2qb8ck42q"]
 
-[ext_resource type="Script" uid="uid://drj05u5dg7824" path="res://Abilities/Reactions/Blast.gd" id="1_x77nc"]
-[ext_resource type="Script" uid="uid://db55v3ssocdt6" path="res://Abilities/Reactions/BlastProjectile.gd" id="2_mko80"]
+[ext_resource type="Script" uid="uid://cm640blh2uc3c" path="res://Abilities/Reactions/Blast.gd" id="1_x77nc"]
+[ext_resource type="Script" uid="uid://buy1w3sch0a7k" path="res://Abilities/Reactions/BlastProjectile.gd" id="2_mko80"]
 [ext_resource type="Texture2D" uid="uid://xox7jfsei02j" path="res://Resources/abilities/blast-sprite.png" id="3_6ew2r"]
 
 [node name="Blast" type="Node2D"]

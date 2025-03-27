@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxw004mxua8p3"]
 
-[ext_resource type="Script" uid="uid://e7hb1sq4u1cl" path="res://Abilities/Reactions/Break.gd" id="1_hxf5c"]
+[ext_resource type="Script" uid="uid://bjwnyv5t46y6k" path="res://Abilities/Reactions/Break.gd" id="1_hxf5c"]
 
 [node name="Break" type="Node2D"]
 script = ExtResource("1_hxf5c")

@@ -8,7 +8,7 @@ func get_reaction_scene(reactant_element: String) -> Node2D:
 	match reactant_element:
 		"sunder": return SkillSceneHandler.get_scene_by_name("break")
 		"entropy": return SkillSceneHandler.get_scene_by_name("fork")
-		"construct": return SkillSceneHandler.get_scene_by_name("life")
-		"growth": return SkillSceneHandler.get_scene_by_name("justice")
+		"construct": return SkillSceneHandler.get_scene_by_name("justice")
+		"growth": return SkillSceneHandler.get_scene_by_name("pursuit")
 		"wither": return SkillSceneHandler.get_scene_by_name("swarm")
 		_: return null

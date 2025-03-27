@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ch3yocec6sk0e"]
 
 [ext_resource type="Texture2D" uid="uid://bl4bjpbncf41p" path="res://Resources/2D Pixel Dungeon Asset Pack/character and tileset/Dungeon_Tileset.png" id="1_g8xes"]
-[ext_resource type="Script" uid="uid://bg82uw54j353g" path="res://Interactables/UpgradeChest.gd" id="1_u4jhe"]
+[ext_resource type="Script" uid="uid://ce2objwef3iu3" path="res://Interactables/UpgradeChest.gd" id="1_u4jhe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1t8l3"]
 radius = 15.0

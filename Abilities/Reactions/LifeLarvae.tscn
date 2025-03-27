@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlyorhhq58k8w"]
+
+[ext_resource type="Script" uid="uid://dng0ld5e3ocej" path="res://Abilities/Reactions/LifeLarvae.gd" id="1_a4f6h"]
+[ext_resource type="Texture2D" uid="uid://c8wygrlli833v" path="res://Resources/abilities/lifelarvae.png" id="2_wr04o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wr04o"]
+atlas = ExtResource("2_wr04o")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cjk4v"]
+atlas = ExtResource("2_wr04o")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mdd6s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wr04o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cjk4v")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cjk4v"]
+radius = 5.0
+height = 18.0
+
+[node name="LifeLarvae" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_a4f6h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_mdd6s")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_cjk4v")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+navigation_layers = 2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

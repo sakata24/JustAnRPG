@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://p2sdmnec2uhl"]
 
-[ext_resource type="Script" uid="uid://1qhissxc3k5n" path="res://Abilities/BossMoves/Cannon.gd" id="1_vlhfd"]
+[ext_resource type="Script" uid="uid://4g8qvg2pnknk" path="res://Abilities/BossMoves/Cannon.gd" id="1_vlhfd"]
 [ext_resource type="Texture2D" uid="uid://c4kix7dbt6nxq" path="res://Resources/abilities/wither-sprite.png" id="2_4gkk4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q58be"]
@@ -58,9 +58,9 @@ hframes = 3
 modulate = Color(0.439216, 0.188235, 0.627451, 1)
 emitting = false
 amount = 45
-process_material = SubResource("ParticleProcessMaterial_hfdma")
 one_shot = true
 explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_hfdma")
 
 [node name="DelayTimer" type="Timer" parent="."]
 one_shot = true

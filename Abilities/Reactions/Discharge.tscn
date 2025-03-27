@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdx05qsaongnb"]
 
-[ext_resource type="Script" uid="uid://biiqncmv2iyth" path="res://Abilities/Reactions/Discharge.gd" id="1_7oqkg"]
+[ext_resource type="Script" uid="uid://dpmjngg8cghaw" path="res://Abilities/Reactions/Discharge.gd" id="1_7oqkg"]
 [ext_resource type="Texture2D" uid="uid://c8j5bxm1ytgd4" path="res://Resources/abilities/discharge-particle-sprite.png" id="2_6bpwe"]
 
 [sub_resource type="Curve" id="Curve_ty3yy"]

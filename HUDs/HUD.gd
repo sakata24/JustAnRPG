@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name HUD extends CanvasLayer
 
 var hudScale = 100
 

@@ -1,0 +1,20 @@
+- [UI] settings
+- BUG [UI]: cooldown dash doesnt reflect on UI
+- BUG [Visual?]: particles for singularity show more than usual
+- BUG [Gameplay]: boss should not be able to be moved by singularity
+- BUG [Gameplay]: boss level monsters should not drop upgrades
+- BUG [Gameplay] Scythes spawning outside should not occur
+- [UI] show upgrades chosen
+- [UI] tooltips
+- [???] screen shrink on boss
+- [Gameplay] finish reactions:
+	burst,fork,justice,swarm
+	burst: ?
+	fork: split the fork spell into two
+	justice: emit a circle that pushes enemies back
+	swarm: create a storm of "bugs" that chase the nearest enemy
+
+- gameplay notes -
+- construct dmg scale w size
+
+- laa boss -

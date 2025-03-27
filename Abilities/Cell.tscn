@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bnisb47qe61bq" path="res://Abilities/BaseTypeAbility.tscn" id="1_r0l3y"]
 [ext_resource type="SpriteFrames" uid="uid://w5hxxf6gbbmr" path="res://Abilities/Animations/CellSprite.tres" id="2_taewv"]
-[ext_resource type="Script" uid="uid://dbt46o4uasim1" path="res://Abilities/AbilityScripts/Cell.gd" id="2_um5x5"]
+[ext_resource type="Script" uid="uid://kpt5agk63wab" path="res://Abilities/AbilityScripts/Cell.gd" id="2_um5x5"]
 
 [node name="AbilityBody" instance=ExtResource("1_r0l3y")]
 script = ExtResource("2_um5x5")
@@ -13,3 +13,9 @@ visible = false
 [node name="AnimatedSprite2D" parent="." index="3"]
 sprite_frames = ExtResource("2_taewv")
 autoplay = "default"
+
+[node name="GrowthTimer" type="Timer" parent="." index="4"]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="GrowthTimer" to="." method="_on_growth_timer_timeout"]
